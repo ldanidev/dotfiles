@@ -7,14 +7,12 @@ Host live
 	HostName 162.55.25.223
 	User root
 	Port 2245
-	RemoteCommand cd pantona-live-kit-backend && exec $SHELL
 	RequestTTY yes
 
 Host live2
 	HostName 162.55.25.223
 	User root
 	Port 2244
-	RemoteCommand cd pantona-live-kit-backend && exec $SHELL
 	RequestTTY yes
 
 Host nginx
@@ -36,7 +34,6 @@ Host meet
 	HostName 162.55.25.223
 	User root
 	Port 2217
-	RemoteCommand cd pantona-livekit-web && exec $SHELL
 	RequestTTY yes
 
 Host live-logs
