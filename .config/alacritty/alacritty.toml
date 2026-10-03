@@ -2,11 +2,10 @@
 import = [ "~/dotfiles/.config/alacritty/themes/gruvbox_dark.toml" ]
 
 [font]
-size = 12
+size = 11
 
 [font.normal]
 family = "Fira Code"
-# family = "Iosevka"
 
 [[keyboard.bindings]]
 action = "None"
