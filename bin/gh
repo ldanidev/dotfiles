@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# gh wrapper: selects the right GitHub account based on current directory or git remote URL
+#
+# How to test:
+#   cd ~/dev/snap360 && gh api user --jq .login   # should output: userA
+#   cd ~             && gh api user --jq .login   # should output: userB
+
+real=/usr/bin/gh
+
+if [[ -z $GH_TOKEN && $1 != auth ]]; then
+  url=$(git remote get-url origin 2>/dev/null)
+
+  if [[ "$url" == *snap360* || "$PWD" == *snap360* ]]; then
+    user=luissdani
+  else
+    user=ldanidev
+  fi
+
+  if token=$("$real" auth token --user "$user" 2>/dev/null) && [[ -n $token ]]; then
+    export GH_TOKEN="$token"
+  else
+    echo "gh wrapper: could not get token for $user" >&2
+    exit 1
+  fi
+fi
+
+exec "$real" "$@"
+

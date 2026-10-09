@@ -10,7 +10,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 PS1='[\u@\h \W]\$ '
-. "$HOME/.cargo/env"
 
 export EDITOR=helix
 
@@ -29,12 +28,4 @@ fwatch() {
 }
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-gh() {
-  if [[ "$PWD" == *"/work/"* ]]; then
-    command gh --user work-username "$@"
-  else
-    command gh --user personal-username "$@"
-  fi
-}
 
