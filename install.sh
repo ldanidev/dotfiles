@@ -1,4 +1,7 @@
 #!/bin/sh
+# Dotfiles installer: safely symlinks configs to ~/.config and $HOME.
+# Existing non-symlink targets are backed up to .bak on first run.
+# Safe to re-run anytime configs are added or modified.
 set -eu
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"

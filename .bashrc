@@ -30,3 +30,11 @@ fwatch() {
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+gh() {
+  if [[ "$PWD" == *"/work/"* ]]; then
+    command gh --user work-username "$@"
+  else
+    command gh --user personal-username "$@"
+  fi
+}
+
