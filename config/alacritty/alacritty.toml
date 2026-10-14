@@ -1,5 +1,5 @@
 [general]
-import = [ "~/dotfiles/.config/alacritty/themes/gruvbox_dark.toml" ]
+import = [ "~/dotfiles/config/alacritty/themes/gruvbox_material.toml" ]
 
 [font]
 size = 11

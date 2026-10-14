@@ -24,7 +24,7 @@ vim.pack.add({
     { src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 })
 
-require("oil").setup()
+require("oil").setup({ view_options = { show_hidden = true }})
 require("mini.pick").setup()
 require("mini.extra").setup()
 require("mason").setup()
