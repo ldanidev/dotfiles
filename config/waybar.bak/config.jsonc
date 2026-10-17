@@ -1,0 +1,31 @@
+{
+	"height": 32,
+	"layer": "top",
+	"position": "top",
+	"modules-left": ["sway/workspaces"],
+	"modules-center": ["clock"],
+	"modules-right": ["pulseaudio", "cpu", "memory", "tray"],
+	"clock": {
+		"format": "{:%a %d, %H:%M}",
+		"tooltip": false
+	},
+	"pulseaudio": {
+		"format": "{icon}  {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}% ",
+		"format-muted": "MUTE",
+		"format-icons": { "default": ["", ""] },
+		"scroll-step": 2.0,
+		"on-click": "pavucontrol"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "cpu {usage:2}%"
+	},
+	"memory": {
+		"interval": 5,
+		"format": "mem {}%"
+	},
+	"tray": {
+		"icon-size": 20
+	}
+}

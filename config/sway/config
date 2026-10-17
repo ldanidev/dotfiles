@@ -17,7 +17,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 # set $menu wmenu-run
-set $menu fuzzel
+set $menu rofi -show drun
 
 xwayland enable
 
@@ -269,18 +269,16 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	# swaybar_command waybar
     position top
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
     status_command i3status-rs ~/.config/i3status-rust/config.toml
-	# status_command ~/.sway/volume-status.sh
-
+    font pango:Fira Code, Font Awesome 6 Free, Font Awesome 6 Brands 10
     colors {
-        statusline #ffffff
-        background #323232
+        separator #665c54
+        background #1d2021
+        statusline #ebdbb2
+        focused_workspace #e78a4e #e78a4e #1d2021
+        active_workspace #3c3836 #282828 #ebdbb2
+        inactive_workspace #1d2021 #1d2021 #a89984
+        urgent_workspace #cc241d #cc241d #ebdbb2
     }
 }
-
-include /etc/sway/config.d/*
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

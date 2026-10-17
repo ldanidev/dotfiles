@@ -5,27 +5,57 @@
 	"modules-left": ["sway/workspaces"],
 	"modules-center": ["clock"],
 	"modules-right": ["pulseaudio", "cpu", "memory", "tray"],
+	"sway/workspaces": {
+		"disable-scroll": false,
+		"all-outputs": false,
+		"format": "{name}"
+	},
 	"clock": {
 		"format": "{:%a %d, %H:%M}",
-		"tooltip": false
+		"tooltip": true,
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#fabd2f'><b>{}</b></span>",
+				"days": "<span color='#ebdbb2'><b>{}</b></span>",
+				"weeks": "<span color='#b8bb26'><b>W{}</b></span>",
+				"weekdays": "<span color='#fe8019'><b>{}</b></span>",
+				"today": "<span color='#fb4934'><b><u>{}</u></b></span>"
+			}
+		}
 	},
 	"pulseaudio": {
 		"format": "{icon}  {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}% ",
 		"format-muted": "MUTE",
-		"format-icons": { "default": ["", ""] },
+		"format-icons": {
+			"default": ["", ""]
+		},
 		"scroll-step": 2.0,
 		"on-click": "pavucontrol"
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "cpu {usage:2}%"
+		"format": "cpu {usage:2}%",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
 	},
 	"memory": {
 		"interval": 5,
-		"format": "mem {}%"
+		"format": "mem {}%",
+		"states": {
+			"warning": 75,
+			"critical": 90
+		}
 	},
 	"tray": {
-		"icon-size": 20
+		"icon-size": 20,
+		"spacing": 8
 	}
 }

@@ -22,13 +22,14 @@ vim.pack.add({
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/mason-org/mason-lspconfig.nvim",
     { src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/nvim-flutter/flutter-tools.nvim',
 })
 
 require("oil").setup({ view_options = { show_hidden = true }})
 require("mini.pick").setup()
 require("mini.extra").setup()
 require("mason").setup()
-
 require("blink.cmp").setup({
     keymap = {
         preset = "enter",
@@ -46,6 +47,9 @@ require("blink.cmp").setup({
         },
     },
 })
+
+require("flutter-tools").setup({ fvm = true })
+
 
 vim.lsp.config("rust_analyzer", {})
 vim.lsp.config("ts_ls", {})

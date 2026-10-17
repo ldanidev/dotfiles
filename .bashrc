@@ -5,13 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias hx='helix'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 PS1='[\u@\h \W]\$ '
 
-export EDITOR=helix
 
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway
@@ -21,7 +19,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Rebuild all generated artifacts (pub get, codegen, l10n) for snap360
 snapbuild() {
-    local root="/home/daniel/dev/snap360"
+    local root="/home/ldanidev/dev/snap360"
     if [[ -d "$root/snap360" && ! -d "$root/packages" ]]; then
         root="$root/snap360"
     fi
@@ -77,3 +75,11 @@ snapbuild() {
 }
 
 
+. "$HOME/.cargo/env"
+  export PATH="/home/ldanidev/fvm/bin:$PATH"
+
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/ldanidev/.local/bin:$PATH"
+export PATH="/home/ldanidev/.local/bin:$PATH"

@@ -1,41 +1,213 @@
+/* =============================================================================
+ * Gruvbox Dark Hard Theme for Waybar
+ * Palette: github.com/morhetz/gruvbox (Dark Hard Contrast: #1d2021)
+ * ============================================================================= */
+
+/* --- Gruvbox Dark Hard Palette --- */
+@define-color bg0             #1d2021; /* Main hard dark background */
+@define-color bg0_s           #32302f; /* Soft / Hover */
+@define-color bg1             #282828; /* Module container background */
+@define-color bg2             #3c3836; /* Subtle border */
+@define-color bg3             #504945; /* Elevated border */
+@define-color bg4             #665c54; /* High contrast border */
+
+@define-color fg0             #fbf1c7; /* Bright foreground */
+@define-color fg1             #ebdbb2; /* Main foreground */
+@define-color fg2             #d5c4a1;
+@define-color fg3             #bdae93;
+@define-color fg4             #a89984; /* Dimmed text */
+
+@define-color grey            #928374;
+
+@define-color red             #fb4934;
+@define-color red_dark        #cc241d;
+@define-color green           #b8bb26;
+@define-color green_dark      #98971a;
+@define-color yellow          #fabd2f;
+@define-color yellow_dark     #d79921;
+@define-color blue            #83a598;
+@define-color blue_dark       #458588;
+@define-color purple          #d3869b;
+@define-color purple_dark     #b16286;
+@define-color aqua            #8ec07c;
+@define-color aqua_dark       #689d6a;
+@define-color orange          #fe8019;
+@define-color orange_dark     #d65d0e;
+
 * {
-	font-size: 15px;
-	font-family: JetBrains Mono;
-	padding-bottom: 2px;
+	font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", "Fira Code", FontAwesome, sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	min-height: 0;
+	padding-bottom: 0px;
 }
 
 window#waybar {
-	background: #282828;
-	border-bottom: 1px solid #504945;
+	background: @bg0;
+	color: @fg1;
+	border-bottom: 2px solid @bg2;
+}
+
+/* --- Sway Workspaces --- */
+#workspaces {
+	margin-left: 4px;
 }
 
 #workspaces button {
 	border-radius: 4px;
-	border: 2px solid #665c54;
-	color: #D5C4A1;
-	background: #3c3836;
-	margin: 0px 2px;
-	padding: 0px 2px;
+	border: 1px solid @bg2;
+	color: @fg4;
+	background: @bg1;
+	margin: 3px 2px;
+	padding: 0px 8px;
 	min-height: 0;
+	transition: all 0.15s ease-in-out;
+}
+
+#workspaces button:hover {
+	background: @bg2;
+	color: @fg0;
+	border-color: @grey;
+}
+
+#workspaces button.visible {
+	background: @bg0_s;
+	color: @fg1;
+	border-color: @grey;
 }
 
 #workspaces button.focused {
-	background: #BDAE93;
-	color: #3D3A33;
+	background: #e78a4e;
+	color: @bg0;
+	border: 1px solid #e78a4e;
+	font-weight: bold;
 }
 
-#clock, #pulseaudio, #memory, #cpu, #tray {
+#workspaces button.urgent {
+	background: @red;
+	color: @bg0;
+	border: 1px solid @red;
+	font-weight: bold;
+}
+
+/* --- Center Clock --- */
+#clock {
 	border-radius: 4px;
-	color: #D5C4A1;
-	border: 2px solid #665c54;
-	background: #322D28;
-	padding: 0px 8px;
+	color: @fg1;
+	border: 1px solid @bg2;
+	background: @bg1;
+	padding: 0px 12px;
+	margin: 3px 0px;
 	min-height: 0;
+	font-weight: 600;
+	transition: all 0.15s ease-in-out;
 }
 
-#pulseaudio, #memory, #cpu, #tray {
+#clock:hover {
+	background: @bg0_s;
+	border-color: @yellow;
+	color: @yellow;
+}
+
+/* --- Right Modules --- */
+#pulseaudio, #cpu, #memory, #tray {
+	border-radius: 4px;
+	border: 1px solid @bg2;
+	background: @bg1;
+	margin: 3px 0px 3px 6px;
+	padding: 0px 10px;
+	min-height: 0;
+	font-weight: 600;
+	transition: all 0.15s ease-in-out;
+}
+
+/* Pulseaudio */
+#pulseaudio {
+	color: @yellow;
+	border-color: @bg2;
+}
+
+#pulseaudio:hover {
+	background: @bg0_s;
+	border-color: @yellow;
+}
+
+#pulseaudio.muted {
+	background: @bg0_s;
+	color: @grey;
+	border-color: @bg2;
+}
+
+/* CPU */
+#cpu {
+	color: @blue;
+	border-color: @bg2;
+}
+
+#cpu:hover {
+	background: @bg0_s;
+	border-color: @blue;
+}
+
+#cpu.warning {
+	color: @orange;
+	border-color: @orange;
+}
+
+#cpu.critical {
+	background: @red;
+	color: @bg0;
+	border-color: @red;
+}
+
+/* Memory */
+#memory {
+	color: @purple;
+	border-color: @bg2;
+}
+
+#memory:hover {
+	background: @bg0_s;
+	border-color: @purple;
+}
+
+#memory.warning {
+	color: @orange;
+	border-color: @orange;
+}
+
+#memory.critical {
+	background: @red;
+	color: @bg0;
+	border-color: @red;
+}
+
+/* System Tray */
+#tray {
+	color: @fg1;
+	background: @bg1;
+	border-color: @bg2;
+	padding: 0px 6px;
 	margin-right: 6px;
-	background: #C9AF82;
-	color: #3D3A33;
 }
 
+#tray > .passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	border-color: @orange;
+}
+
+/* Tooltip styling */
+tooltip {
+	background: @bg1;
+	border: 1px solid @bg3;
+	border-radius: 4px;
+}
+
+tooltip label {
+	color: @fg1;
+	padding: 4px;
+}

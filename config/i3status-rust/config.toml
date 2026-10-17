@@ -1,0 +1,25 @@
+# i3status-rust configuration
+# Minimal setup: sound & time
+
+[theme]
+theme = "gruvbox-dark"
+
+[icons]
+icons = "awesome6"
+
+# Audio Volume (PipeWire / PulseAudio)
+[[block]]
+block = "sound"
+format = " $icon $volume "
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+# Date and Time
+[[block]]
+block = "time"
+interval = 1
+format = " $icon $timestamp.datetime(f:'%b %d %H:%M') "
+[[block.click]]
+button = "left"
+cmd = "zenity --calendar"
